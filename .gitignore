@@ -1,8 +1,73 @@
-   # Ignore node_modules
-   node_modules/
+# --- Virtual Environment ---
+# Standard virtual environment directory names
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
 
-   # Ignore Python cache files
-   __pycache__/
+# --- Python Cache & Compiled Files ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
-   # Ignore environment files
-   .env
+# --- Distribution / Build Artifacts ---
+build/
+dist/
+*.egg-info/
+*.so
+*.egg
+*.whl
+
+# --- IDE / Editor Configuration ---
+# VS Code
+.vscode/
+# PyCharm
+.idea/
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+# Other common ones
+.project
+.pydevproject
+.settings/
+
+# --- Operating System Files ---
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+
+# --- Notebook Checkpoints ---
+.ipynb_checkpoints/
+
+# --- Log Files ---
+*.log
+
+# --- Secrets / Credentials (NEVER COMMIT THESE!) ---
+# Common convention for local environment variables
+.env
+.env.*
+!*.env.example
+!*.env.template
+# Add any other specific secret files here (e.g., credentials.json, secrets.yaml)
+
+# --- Testing / Coverage ---
+.pytest_cache/
+.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# --- Datasets (Often Large - Better to store elsewhere or provide download script) ---
+# If your datasets are large, uncomment the line below.
+# Provide instructions in README on how to obtain the data.
+# datasets/
+
+# --- Other Temporary/Backup Files ---
+*~
+*.bak
+*.swp
