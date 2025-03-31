@@ -1,3 +1,14 @@
+# Machine Learning Fundamentals Studio
+
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Last Commit](https://img.shields.io/github/last-commit/riccardomerenda/ml_fundamentals_studio)](https://github.com/riccardomerenda/ml_fundamentals_studio/commits/main)
+[![Algorithms](https://img.shields.io/badge/algorithms-8-green.svg)](https://github.com/riccardomerenda/ml_fundamentals_studio#project-overview)
+[![Open Issues](https://img.shields.io/github/issues/riccardomerenda/ml_fundamentals_studio)](https://github.com/riccardomerenda/ml_fundamentals_studio/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/riccardomerenda/ml_fundamentals_studio)](https://github.com/riccardomerenda/ml_fundamentals_studio/pulls)
+[![Stars](https://img.shields.io/github/stars/riccardomerenda/ml_fundamentals_studio)](https://github.com/riccardomerenda/ml_fundamentals_studio/stargazers)
+[![Forks](https://img.shields.io/github/forks/riccardomerenda/ml_fundamentals_studio)](https://github.com/riccardomerenda/ml_fundamentals_studio/network)
+
 # ML Fundamentals Journey
 
 This repository documents my journey learning fundamental machine learning concepts by implementing algorithms from scratch. Rather than just using high-level libraries, I've built core ML algorithms step-by-step to deepen my understanding of the underlying mathematics and principles.
