@@ -116,73 +116,41 @@ def plot_regression_results(model, X, y, X_test=None, y_test=None, feature_index
     return fig
 
 
-def plot_decision_boundary(model, X, y, step=0.01, title="Decision Boundary", figsize=(10, 8)):
+def plot_decision_boundary(X, y, model, title="Decision Boundary"):
     """
-    Plot the decision boundary of a classification model.
+    Plot the decision boundary for a 2D dataset
     
-    Works only with 2D input features.
-    
-    Parameters
-    ----------
+    Parameters:
+    -----------
+    X : array-like, shape = [n_samples, 2]
+        Training data
+    y : array-like, shape = [n_samples]
+        Target values
     model : object
-        The trained classification model with predict method.
-    X : array-like of shape (n_samples, 2)
-        Training features.
-    y : array-like of shape (n_samples,)
-        Training labels.
-    step : float, default=0.01
-        Step size for the meshgrid.
-    title : str, default="Decision Boundary"
-        Title for the plot.
-    figsize : tuple, default=(10, 8)
-        Figure size.
-    
-    Returns
-    -------
-    fig : matplotlib.figure.Figure
-        The matplotlib figure object.
+        Trained model with predict method
+    title : str
+        Title for the plot
     """
-    X = np.array(X)
-    y = np.array(y)
+    # Set min and max values with some margin
+    x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
+    y_min, y_max = X[:, 1].min() - 0.5, X[:, 1].max() + 0.5
     
-    if X.shape[1] != 2:
-        raise ValueError(f"Expected X to have 2 features, got {X.shape[1]}")
+    # Create a mesh grid
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02),
+                        np.arange(y_min, y_max, 0.02))
     
-    # Create a meshgrid covering the feature space
-    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, step),
-                         np.arange(y_min, y_max, step))
-    
-    # Create a grid of points and predict class labels for each point
+    # Make predictions for each point in the mesh
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
     
-    # Create figure
-    fig, ax = plt.subplots(figsize=figsize)
-    
-    # Plot decision boundary
-    cmap_background = ListedColormap(['#FFAAAA', '#AAAAFF'])
-    ax.contourf(xx, yy, Z, cmap=cmap_background, alpha=0.8)
-    
-    # Plot class samples
-    cmap_points = ListedColormap(['red', 'blue'])
-    scatter = ax.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_points, 
-                        edgecolor='k', s=40, alpha=0.8)
-    
-    # Set axis limits and labels
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-    ax.set_xlabel('Feature 1')
-    ax.set_ylabel('Feature 2')
-    ax.set_title(title)
-    
-    # Create legend
-    classes = np.unique(y)
-    legend_labels = [f'Class {int(c)}' for c in classes]
-    ax.legend(handles=scatter.legend_elements()[0], labels=legend_labels, loc="best")
-    
-    return fig
+    # Plot the contour and training points
+    plt.figure(figsize=(10, 8))
+    plt.contourf(xx, yy, Z, alpha=0.4)
+    plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8)
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
+    plt.title(title)
+    plt.show()
 
 
 def plot_overfitting_curve(model_class, degrees, X_train, y_train, X_val, y_val,
@@ -300,3 +268,54 @@ def plot_regularization_path(X, y, lambda_values, model_class, degree=2, figsize
     ax.grid(True)
     
     return fig
+
+
+def plot_learning_curve(train_scores, val_scores, title="Learning Curve"):
+    """
+    Plot learning curves showing training and validation scores
+    
+    Parameters:
+    -----------
+    train_scores : array-like
+        List of training scores
+    val_scores : array-like
+        List of validation scores
+    title : str
+        Title for the plot
+    """
+    plt.figure(figsize=(10, 6))
+    epochs = range(1, len(train_scores) + 1)
+    plt.plot(epochs, train_scores, 'b-', label='Training score')
+    plt.plot(epochs, val_scores, 'r-', label='Validation score')
+    plt.title(title)
+    plt.xlabel('Epochs')
+    plt.ylabel('Score')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+
+def plot_regression_line(X, y, y_pred, title="Regression Line"):
+    """
+    Plot regression data points and the fitted line
+    
+    Parameters:
+    -----------
+    X : array-like
+        Input features
+    y : array-like
+        True target values
+    y_pred : array-like
+        Predicted target values
+    title : str
+        Title for the plot
+    """
+    plt.figure(figsize=(10, 6))
+    plt.scatter(X, y, color='blue', label='Data points')
+    plt.plot(X, y_pred, color='red', label='Regression line')
+    plt.xlabel('X')
+    plt.ylabel('y')
+    plt.title(title)
+    plt.legend()
+    plt.grid(True)
+    plt.show()

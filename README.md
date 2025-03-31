@@ -11,6 +11,9 @@ This project implements and visualizes key machine learning algorithms and conce
 - **Polynomial Regression**: Visualizing the bias-variance tradeoff
 - **Regularization**: L2 regularization to combat overfitting
 - **Logistic Regression**: Implementation with gradient descent for classification tasks
+- **Neural Networks**: Implementation from scratch with forward propagation
+- **Decision Trees**: Implementation with information gain and entropy calculations
+- **Tree Ensembles**: Random Forests and XGBoost implementations
 
 Each implementation includes detailed visualization tools to demonstrate important ML concepts like learning rates, convergence, overfitting/underfitting, and the effects of regularization.
 
@@ -28,6 +31,8 @@ Each implementation includes detailed visualization tools to demonstrate importa
 2. **Interactive Visualizations**: Learning curves, decision boundaries, and parameter effects
 3. **Comparison with Scikit-learn**: Validating implementations against industry-standard libraries
 4. **Comprehensive Documentation**: Detailed explanations of mathematical concepts and implementation details
+5. **Neural Network Visualization**: Forward propagation visualization and layer activation patterns
+6. **Decision Tree Visualization**: Tree structure visualization and split decisions
 
 ## Getting Started
 
@@ -58,6 +63,9 @@ This repository follows a learning path that mirrors my own ML education:
 3. Understand overfitting through polynomial regression
 4. Learn regularization methods to improve generalization
 5. Implement logistic regression for classification problems
+6. Build neural networks from scratch with forward propagation
+7. Implement decision trees with information gain
+8. Explore tree ensembles (Random Forests and XGBoost)
 
 ## Visualizations
 
@@ -67,14 +75,18 @@ The repository includes tools to visualize:
 - Overfitting vs. underfitting with polynomial features
 - Impact of regularization on model complexity
 - Decision boundaries for classification problems
+- Neural network layer activations and forward propagation
+- Decision tree structure and split decisions
+- Tree ensemble predictions and feature importance
 
 ## Future Additions
 
 As I continue my ML journey, I plan to add:
 - Support Vector Machines
-- Neural Networks from scratch
-- Decision Trees and Random Forests
+- Backpropagation in Neural Networks
+- Advanced Neural Network architectures (CNNs, RNNs)
 - Clustering algorithms
+- Reinforcement Learning basics
 
 ## References
 
