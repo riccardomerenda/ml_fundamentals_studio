@@ -116,7 +116,7 @@ def plot_regression_results(model, X, y, X_test=None, y_test=None, feature_index
     return fig
 
 
-def plot_decision_boundary(X, y, model, title="Decision Boundary"):
+def plot_decision_boundary(X, y, model, title="Decision Boundary", ax=None):
     """
     Plot the decision boundary for a 2D dataset
     
@@ -130,6 +130,8 @@ def plot_decision_boundary(X, y, model, title="Decision Boundary"):
         Trained model with predict method
     title : str
         Title for the plot
+    ax : matplotlib.axes.Axes, optional
+        The axes to plot on. If None, creates a new figure.
     """
     # Set min and max values with some margin
     x_min, x_max = X[:, 0].min() - 0.5, X[:, 0].max() + 0.5
@@ -143,14 +145,18 @@ def plot_decision_boundary(X, y, model, title="Decision Boundary"):
     Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
     Z = Z.reshape(xx.shape)
     
+    # Create new figure if no axes provided
+    if ax is None:
+        _, ax = plt.subplots(figsize=(10, 8))
+    
     # Plot the contour and training points
-    plt.figure(figsize=(10, 8))
-    plt.contourf(xx, yy, Z, alpha=0.4)
-    plt.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8)
-    plt.xlabel("Feature 1")
-    plt.ylabel("Feature 2")
-    plt.title(title)
-    plt.show()
+    ax.contourf(xx, yy, Z, alpha=0.4)
+    ax.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8)
+    ax.set_xlabel("Feature 1")
+    ax.set_ylabel("Feature 2")
+    ax.set_title(title)
+    
+    return ax
 
 
 def plot_overfitting_curve(model_class, degrees, X_train, y_train, X_val, y_val,
